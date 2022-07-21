@@ -11,7 +11,7 @@ npm i cosmos-chain-registry-reader
 ### Setup
 
 ```js
-import CHAIN_REGISTRY from "cosmos-chain-registry-reader";
+import { CHAIN_REGISTRY } from "cosmos-chain-registry-reader";
 ```
 
 ### Usage
