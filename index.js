@@ -174,8 +174,7 @@ var load = async function () {
   await FUNCTIONS.update_all_testnet_metadata(); // get chain.json for each testnet
 };
 
-
-export default CHAIN_REGISTRY = {
+export const CHAIN_REGISTRY = {
   "_chains": CHAINS,
   "_testnets": TESTNETS,
   "_stats": STATS,
