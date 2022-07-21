@@ -165,7 +165,7 @@ var query = function (options = {
 };
 
 
-var init = async function () {
+var load = async function () {
   console.log();
   console.log('\x1b[33m%s\x1b[0m', `## Syncronizing Chain Registry:`);
   await FUNCTIONS.scan_github_chains(); // populate CHAIN_REGISTRY.CHAINS object with a keys for each subfolder in cosmos/chain-registry.
@@ -181,6 +181,6 @@ export default CHAIN_REGISTRY = {
   "_stats": STATS,
   "_github_apis": GITHUB_APIS,
   "_functions": FUNCTIONS,
-  "init": init,
+  "load": load,
   "query": query
 };

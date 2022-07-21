@@ -1,6 +1,6 @@
 {
   "name": "cosmos-chain-registry-reader",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "node.js library to read the cosmos chain-registry",
   "main": "index.js",
   "type": "module",
