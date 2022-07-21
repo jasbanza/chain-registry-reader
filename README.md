@@ -11,14 +11,14 @@ npm i cosmos-chain-registry-reader
 ### Setup
 
 ```js
-const CHAIN_REGISTRY = require('cosmos-chain-registry-reader');
+import CHAIN_REGISTRY from "cosmos-chain-registry-reader";
 ```
 
 ### Usage
 
 ```js
 // fetch the chain-registry asynchronously. Call again to refresh
-await CHAIN_REGISTRY.init();  
+await CHAIN_REGISTRY.load();  
 
 // query the cached registry, optionally filter fields and values
 CHAIN_REGISTRY.query({

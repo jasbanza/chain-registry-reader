@@ -1,5 +1,5 @@
 "use strict";
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 
 /* GLOBALS */
@@ -14,15 +14,15 @@ const GITHUB_APIS = {
   "testnets": null // fetched dynamically
 }
 const FUNCTIONS = {
-  "init": async function() {},
-  "scan_github_chains": async function() {}, // used to initialize CHAINS
-  "scan_github_testnets": async function() {}, // used to initialize TESTNETS
-  "update_all_chain_metadata": async function() {}, // gets chain.json for all CHAINS.
-  "update_all_testnet_metadata": async function() {}, // gets chain.json for all TESTNETS.
-  "filter_by_json": function(options = {}) {} // used to get
+  "init": async function () { },
+  "scan_github_chains": async function () { }, // used to initialize CHAINS
+  "scan_github_testnets": async function () { }, // used to initialize TESTNETS
+  "update_all_chain_metadata": async function () { }, // gets chain.json for all CHAINS.
+  "update_all_testnet_metadata": async function () { }, // gets chain.json for all TESTNETS.
+  "filter_by_json": function (options = {}) { } // used to get
 };
 
-FUNCTIONS.scan_github_chains = async function() {
+FUNCTIONS.scan_github_chains = async function () {
   console.log('\x1b[33m%s\x1b[0m', `...Retrieving chain list from ${GITHUB_APIS.chain_registry}`);
   await fetch(GITHUB_APIS.chain_registry)
     .then((res) => res.json())
@@ -46,7 +46,7 @@ FUNCTIONS.scan_github_chains = async function() {
     });
   console.log('\x1b[34m%s\x1b[0m', `...Chain list updated. Total chains: ${STATS.chain_count}`);
 };
-FUNCTIONS.scan_github_testnets = async function() {
+FUNCTIONS.scan_github_testnets = async function () {
   console.log('\x1b[33m%s\x1b[0m', `...Retrieving testnet list from ${GITHUB_APIS.testnets}`);
   await fetch(GITHUB_APIS.testnets)
     .then((res) => res.json())
@@ -69,7 +69,7 @@ FUNCTIONS.scan_github_testnets = async function() {
     });
   console.log('\x1b[34m%s\x1b[0m', `...Testnet list updated. Total testnets: ${STATS.testnet_count}`);
 };
-FUNCTIONS.update_all_chain_metadata = async function() {
+FUNCTIONS.update_all_chain_metadata = async function () {
   let count_processed = 0;
   await Promise.all(Object.keys(CHAINS).map(async (chainName) => {
     await fetch(CHAINS[chainName].chain_json_url)
@@ -81,7 +81,7 @@ FUNCTIONS.update_all_chain_metadata = async function() {
   }));
   console.log('\x1b[34m%s\x1b[0m', `...chain.json files loaded: ${count_processed}/${STATS.chain_count}`);
 };
-FUNCTIONS.update_all_testnet_metadata = async function() {
+FUNCTIONS.update_all_testnet_metadata = async function () {
   let count_processed = 0;
   await Promise.all(Object.keys(TESTNETS).map(async (chainName) => {
     await fetch(TESTNETS[chainName].chain_json_url)
@@ -105,7 +105,7 @@ EXAMPLE USAGE:
   });
 
  */
-var query = function(options = {
+var query = function (options = {
   "filter_fields": [], // empty = no filter
   "search": {}
 }) {
@@ -165,7 +165,7 @@ var query = function(options = {
 };
 
 
-var init = async function() {
+var init = async function () {
   console.log();
   console.log('\x1b[33m%s\x1b[0m', `## Syncronizing Chain Registry:`);
   await FUNCTIONS.scan_github_chains(); // populate CHAIN_REGISTRY.CHAINS object with a keys for each subfolder in cosmos/chain-registry.
@@ -175,7 +175,7 @@ var init = async function() {
 };
 
 
-module.exports = {
+export default CHAIN_REGISTRY = {
   "_chains": CHAINS,
   "_testnets": TESTNETS,
   "_stats": STATS,
