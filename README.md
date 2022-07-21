@@ -1,4 +1,4 @@
-# chain-registry-reader
+# cosmos-chain-registry-reader
 
 node.js library to cache and query the cosmos chain-registry
 
