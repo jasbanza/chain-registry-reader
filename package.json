@@ -1,6 +1,6 @@
 {
   "name": "cosmos-chain-registry-reader",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "node.js module to cache and query the cosmos chain-registry",
   "main": "index.js",
   "type": "module",
@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/jasbanza/cosmos-chain-registry-reader#readme",
   "dependencies": {
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^3.2.9"
   }
 }
