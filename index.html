@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="./browser/index.js"></script>
+    <!-- include this file in browser.-->
+    <title>Test chain-registry reader</title>
+</head>
+
+<body>
+    <style>
+        label {
+            display: inline-block;
+            width: 150px;
+        }
+
+        input {
+            width: 200px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+
+        .console {
+            background-color: black;
+            color: green;
+            width: 100%;
+            position: absolute;
+            bottom: 0px;
+            top: 370px;
+            left: 0px;
+            right: 0px;
+            overflow-y: scroll;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+    </style>
+    <h1>cosmos-chain-registry-reader demo</h1>
+    <br>
+    Click "load()" & look at the console below...
+    <br>
+    <button type="button" name="button" onclick="doLoad()">load()</button>
+    <br>
+    <br>
+    <div id="queryWrapper">
+        Optional Parameters js object:
+        <br>
+        <textarea type="textarea" name="queryParameters" id="queryParameters" placeholder="parameters">
+{
+    "filter_fields": ["chain_name", "pretty_name", "chain_id", "bech32_prefix", "slip44", "apis.rest"],
+    "search": {
+        "chain_name": ["akash", "sentinel"]
+    }
+}
+    </textarea>
+        <br>
+
+        <button type="button" name="btnDoQuery" onclick="doQuery()" id="btnDoQuery">query()</button>
+    </div>
+    <br>
+    <br>
+    console.log() output:
+    <button type="button" name="btnClear" onclick="doClear()" id="btnClear">clear console</button>
+    <div class="console">
+        <pre id="log"></pre>
+    </div>
+    <script type="text/javascript">
+        (function () {
+            var old = console.log;
+            var logger = document.getElementById('log');
+            console.log = function () {
+                for (var i = 0; i < arguments.length; i++) {
+                    if (typeof arguments[i] == 'object') {
+                        logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '<br />';
+                    } else {
+                        logger.innerHTML += arguments[i] + '<br />';
+                    }
+                }
+            }
+        })();
+
+        function doLoad() {
+            load().then(() => {
+                document.getElementById("btnDoQuery").disabled = false;
+            });
+        }
+
+        function doQuery() {
+            registry_reader.query(JSON.parse(document.getElementById("queryParameters").innerHTML));
+        }
+
+        function doClear() {
+            document.getElementById("log").innerHTML = "";
+        }
+    </script>
+</body>
+
+</html>

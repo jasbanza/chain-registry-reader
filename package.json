@@ -2,8 +2,11 @@
   "name": "cosmos-chain-registry-reader",
   "version": "1.1.4",
   "description": "node.js module to cache and query the cosmos chain-registry",
-  "main": "index.js",
+  "main": "./src/index.js",
   "type": "module",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

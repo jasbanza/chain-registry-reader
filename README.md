@@ -28,3 +28,10 @@ CHAIN_REGISTRY.query({
   }
 });
 ```
+### Important information:
+
+This module makes use of the github api. Please note the rate limiting:
+
+"For unauthenticated requests, the rate limit allows for up to 60 requests per hour. Unauthenticated requests are associated with the originating IP address, and not the person making requests."
+
+(https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting)[https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting]
